@@ -115,7 +115,9 @@ Pretrained model들에 100 epoch만큼 학습을 시키면서 저장된 각 모�
 ## 참고문헌 (Reference) 
 
 [1] GAN을 활용한 오버샘플링M. J. Son, S. W. Jung, and E. J. Hwang, “A Deep Learning Based Over-Sampling Scheme for Imbalanced Data Classification,” KIPS Transactions on Software and Data Engineering, vol. 8, no. 7, pp. 311–316, Jul. 2019.
+
 [2]https://github.com/rwightman/pytorch-image-models/tree/master/timm/models
+
 [3] https://github.com/rwightman/pytorch-image-models/blob/master/results/
 
 
