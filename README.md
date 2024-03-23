@@ -26,11 +26,11 @@
 
 **c. CGAN Over sampling** : 어느 정도의 육안으로 확인이 가능한 만큼 데이터가 생성이 되는 것을 알 수 있었지만 GAN 모델의 특성상 특징점이 많은 현재 학습 데이터에 대해서 좀 이미지 생성 모델을 더 정교하게 만들기 쉽지 않았고(학습시간 평균 10시간) 위와 같은 사진을 넣어서 학습을 진행하면 오히려 성능이 저하될 것을 생각하여 방법론을 철회하였습니다.
 
-<center>![Figure 1](/figure/CGAN.png)</center>
+![Figure 1](/figure/CGAN.png)
 
 **d. Cut-Mix Over sampling** : 모델이 객체의 차이를 식별할 수 있는 부분에 집중하지 않고, 덜 구별되는 부분 및 이미지의 전체적인 구역을 보고 학습하도록 하여 일반화와 Localization 성능을 높이는 방법
 
-<center>![Figure 2](/figure/custom_cutmix.png)</center>
+![Figure 2](/figure/custom_cutmix.png)
 
 결론적으로 데이터 생성에서 앞서 정의한 Imbalance Data의 문제를 해결하기 위한 방법으로 저희가 실제 구현한 모델에 사용한 기법은 먼저 Cut-Mix 함수를 저희의 case에 맞춘 함수를 구현하여 label0: 1000, label1: 2000 개의 데이터를 새롭게 생성하였습니다. 이 과정을 통해 label 비율이 기존의 약 7:4에서 4:3으로 조정이 되었습니다. 
 
@@ -104,7 +104,7 @@ f. Random Crop
 
 ![Figure 3](/figure/result_1.png)
 ![Figure 4](/figure/result_2.png)
-<center>Best 3 Model들의 Train Accuracy & Validation Accuracy</center>
+<Best 3 Model들의 Train Accuracy & Validation Accuracy>
 
 Pretrained model들에 100 epoch만큼 학습을 시키면서 저장된 각 모델들의 train loss, validation loss의 변화를 나타낸 그래프와 최종 앙상블 모델에 넣을 Best Model들의 train, validation Accuracy입니다. 
 위 3개의 모델을 앙상블하여 위에서 설명드린 3 hard voting, TTA ten crop 기법들을 사용하여 다시 validation data를 예측하는 작업을 수행하였습니다. 결과는 아래와 같습니다. 
