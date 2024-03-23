@@ -104,9 +104,7 @@ f. Random Crop
 
 ![Figure 3](/figure/result_1.png)
 ![Figure 4](/figure/result_2.png)
-<center>
-<Best 3 Model들의 Train Accuracy & Validation Accuracy>
-</center>
+<center>Best 3 Model들의 Train Accuracy & Validation Accuracy</center>
 
 Pretrained model들에 100 epoch만큼 학습을 시키면서 저장된 각 모델들의 train loss, validation loss의 변화를 나타낸 그래프와 최종 앙상블 모델에 넣을 Best Model들의 train, validation Accuracy입니다. 
 위 3개의 모델을 앙상블하여 위에서 설명드린 3 hard voting, TTA ten crop 기법들을 사용하여 다시 validation data를 예측하는 작업을 수행하였습니다. 결과는 아래와 같습니다. 
