@@ -58,3 +58,33 @@
 
 ### e. 레이블 스무딩 (Label Smoothing)
 - 레이블 스무딩은 데이터 정규화 기법 중 하나로, Label을 부드럽게 만들어 모델의 일반화 성능을 향상시키는 방법입니다.
+
+
+## 데이터 증강 (Data Augmentation)
+
+데이터 증강은 주어진 데이터셋을 다양한 방법으로 보강하여 학습 데이터의 다양성을 증가시키는 기법입니다. 이를 통해 모델의 Robustness를 향상시킬 수 있습니다. 아래는 저희가 사용한 데이터 증강 기법입니다.
+
+a. Resize
+- <transforms.Resize(256, 256)>
+- 입력 이미지의 크기를 조정하는 기능입니다. 저희 모델은 입력 이미지의 크기가 (1080, 1920)이었기 때문에 최종적으로 crop(224, 224)을 수행하기에 너무 크다고 판단되어 이미지의 크기를 축소했습니다.
+
+b. Random Horizontal Flip
+- <transforms.RandomHorizontalFlip(p=0.5)>
+- 이미지를 50% 확률로 수평으로 뒤집는 기능입니다.
+
+c. Random Rotation
+- <transforms.RandomRotation(degrees=(-10, 10))>
+- 이미지를 입력된 범위 내에서 랜덤으로 회전시키는 기능입니다.
+
+d. Random Posterize
+- <transforms.RandomPosterize(bits=5, p=0.2)>
+- 이미지를 20% 확률로 bits를 5만큼 감소시키는 기능입니다.
+
+e. Normalization
+- <transforms.Normalize(mean,std)>
+- 이미지들을 정규화하여 범위를 조정하는 기능으로, 학습 과정에서의 안정성과 속도를 향상시키고 local optima 문제를 예방합니다.
+
+f. Random Crop
+- <transforms.RandomCrop(224,224)>
+- 입력된 크기의 데이터 크기로 랜덤한 위치에서 이미지를 자르는 기능입니다.
+
