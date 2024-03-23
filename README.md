@@ -33,3 +33,28 @@
 ![Figure 2](/figure/custom_cutmix.png)
 
 결론적으로 데이터 생성에서 앞서 정의한 Imbalance Data의 문제를 해결하기 위한 방법으로 저희가 실제 구현한 모델에 사용한 기법은 먼저 Cut-Mix 함수를 저희의 case에 맞춘 함수를 구현하여 label0: 1000, label1: 2000 개의 데이터를 새롭게 생성하였습니다. 이 과정을 통해 label 비율이 기존의 약 7:4에서 4:3으로 조정이 되었습니다. 
+
+
+## 모델
+
+### a. 모델 아키텍처
+- 세 가지 사전 학습된 모델을 timm.github에서 불러왔습니다.
+    1. vit_base_patch8_224
+    2. swin_large_patch4_window7_224
+    3. beit_large_patch16_224
+- 이 모델들은 ImageNet-"Real Labels" 결과를 기준으로 선택되었습니다. 기준은 다음과 같습니다:
+    1. 높은 정확도
+    2. 작은 파라미터 수
+    3. 입력 이미지 사이즈가 우리의 이미지 사이즈와 일치하는지 확인
+
+### b. 손실 함수 (Loss Function)
+- Cross Entropy를 사용했습니다. 이는 예측값과 실제 값이 같을 때 최소값을 갖으며, 예측값과 실제 값의 차이가 클수록 증가합니다. 이를 통해 오류 역전파를 진행하여 학습합니다.
+
+### c. 옵티마이저 알고리즘
+- Adam Optimizer를 선택했습니다. Adam은 Adagrad와 RMSProp의 장점을 결합한 것으로, Gradient의 re-scaling에 영향을 받지 않는 장점을 가지고 있습니다. 또한 Hyper-parameter가 직관적이며 튜닝이 거의 필요하지 않습니다.
+
+### d. 학습률 스케줄러 (Learning Rate Scheduler)
+- Cosine Annealing Warm Restarts에 추가적으로 warm up start와 max 값의 감소 기능이 추가된 형태의 스케줄러를 사용했습니다. 이는 미리 정해진 학습 일정에 따라 Learning Rate를 조정하여 학습을 진행하는 방법입니다.
+
+### e. 레이블 스무딩 (Label Smoothing)
+- 레이블 스무딩은 데이터 정규화 기법 중 하나로, Label을 부드럽게 만들어 모델의 일반화 성능을 향상시키는 방법입니다.
