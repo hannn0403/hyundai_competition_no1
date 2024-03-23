@@ -100,7 +100,7 @@ f. Random Crop
 - 이후 3 Model Hard-Voting 방식을 사용하여 최종 분류를 수행합니다. 이 방식은 Majority Voting이라고도 하며, 각 모델이 예측한 결과 중 가장 많은 표를 얻은 클래스를 선택하는 방법입니다.
 
 
-## 결론 
+## 결론 (Conclusion)
 
 ![Figure 3](/figure/result_1.png)
 ![Figure 4](/figure/result_2.png)
@@ -110,4 +110,14 @@ Pretrained model들에 100 epoch만큼 학습을 시키면서 저장된 각 모�
 위 3개의 모델을 앙상블하여 위에서 설명드린 3 hard voting, TTA ten crop 기법들을 사용하여 다시 validation data를 예측하는 작업을 수행하였습니다. 결과는 아래와 같습니다. 
 
 ![Figure 4](/figure/experiment_result.png)
+
+
+## 참고문헌 (Reference) 
+
+[1] GAN을 활용한 오버샘플링M. J. Son, S. W. Jung, and E. J. Hwang, “A Deep Learning Based Over-Sampling Scheme for Imbalanced Data Classification,” KIPS Transactions on Software and Data Engineering, vol. 8, no. 7, pp. 311–316, Jul. 2019.
+[2]https://github.com/rwightman/pytorch-image-models/tree/master/timm/models
+[3] https://github.com/rwightman/pytorch-image-models/blob/master/results/
+
+
+
 
