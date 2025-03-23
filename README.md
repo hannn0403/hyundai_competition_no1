@@ -1,4 +1,4 @@
-# hyundai_competition
+# hyundai_competition_no1
 
 
 ## 1. 문제 정의 (Problem Definition)
