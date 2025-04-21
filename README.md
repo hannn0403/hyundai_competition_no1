@@ -2,6 +2,22 @@
 
 This repository contains code to train and test a classifier for determining the presence of cargo load based on images.
 
+## ❗️ Project Summary
+
+---
+
+1. **진행기간:** 2022.01 ~ 2022.02
+2. **팀명: 현대중공업떡상기원** (한주혁, 차준영, 김민성)
+3. **역할:** 프로젝트 리더, 앙상블 구조 모델링, 학습 및 성능 평가
+4. **기술스택:**  **`Python`**, **`PyTorch`**, **`timm`**
+5. **결과 및 성과:** 
+    - 최종보고서 [**[📄]**](https://drive.google.com/file/d/17Jf_1e98cX9F3HPcIuyDrUWaZfvkKNZk/view?usp=drive_link)
+    - https://github.com/hannn0403/hyundai_competition
+    - [현대중공업그룹] 제 2회 조선/해양산업 디지털 혁신을 위한 Big Data / AI 대학생 경진대회 장려상 수상.
+6. **주요내용:** 본 과제에서는 화물 적재 이미지 4,623개와 미적재 이미지 7,748개로 구성된 데이터셋에서 발생하는 Data Imbalance 문제와 햇빛으로 인한 Low-Contrast Image 문제를 해결하기 위해, Cut-Mix와 CLAHE 기법을 활용하여 데이터를 증강하고 BEiT, Swin Transformer, ViT의 세 가지 모델을 기반으로 학습을 진행한 후 TTA 기법을 적용하여 최종적으로 99.76%의 높은 분류 정확도를 달성하는 파이프라인을 개발하였다.
+
+---
+
 ## Prerequisites
 
 - Python 3.7+
