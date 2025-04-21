@@ -1,5 +1,130 @@
 # hyundai_competition_no1
 
+This repository contains code to train and test a classifier for determining the presence of cargo load based on images.
+
+## Prerequisites
+
+- Python 3.7+
+- PyTorch
+- torchvision
+- timm
+- OpenCV (opencv-python)
+- Pillow
+- scikit-learn
+- pandas
+- tqdm
+- tensorboard
+
+Install dependencies:
+
+```bash
+pip install torch torchvision timm opencv-python pillow scikit-learn pandas tqdm tensorboard
+```
+
+## Repository Structure
+
+```
+hyundai_competition_no1/
+├── code/
+│   ├── main.py
+│   ├── config.py
+│   ├── dataset.py
+│   ├── solver.py
+│   ├── scheduler.py
+│   └── model/
+│       ├── beittransformer.py
+│       ├── swintransformer.py
+│       └── visiontransformer.py
+├── datasets/
+│   ├── train/
+│   │   ├── 0/
+│   │   └── 1/
+│   └── test/
+│       ├── 0/
+│       └── 1/
+├── save/
+├── log/
+└── result.csv
+```
+
+## Data Preparation
+
+Place images under:
+
+```
+datasets/
+├── train/
+│   ├── 0/
+│   └── 1/
+└── test/
+    ├── 0/
+    └── 1/
+```
+
+## Configuration
+
+Modify hyperparameters via command-line arguments (see `code/config.py`):
+
+- `--mode`: `train` or `test` (default: `train`)
+- `--model`: `beittransformer`, `swintransformer`, or `visiontransformer` (default: `beittransformer`)
+- `--epochs`: number of epochs (default: `100`)
+- `--batch`: batch size (default: `8`)
+- `--lr`: learning rate (default: `0.000001`)
+- `--gpu`: GPU index (default: `2`)
+- `--save_model_name`: folder name for saved models
+- `--load_model_name`: checkpoint file to load
+
+## Training
+
+```bash
+python code/main.py --mode train \
+  --model beittransformer \
+  --epochs 100 \
+  --batch 8 \
+  --lr 0.000001 \
+  --gpu 0 \
+  --save_model_name experiment-beittransformer-2
+```
+
+- Logs: `log/experiment-beittransformer-2`
+- Checkpoints: `save/experiment-beittransformer-2`
+
+Start TensorBoard:
+
+```bash
+tensorboard --logdir log
+```
+
+## Testing
+
+```bash
+python code/main.py --mode test \
+  --model beittransformer \
+  --load_model_name experiment-beittransformer-2_17_best.pkl \
+  --gpu 0
+```
+
+- Results: `result.csv`
+
+## Acknowledgments
+
+This implementation is based on timm models and a custom cosine annealing scheduler.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
 
 ## 1. 문제 정의 (Problem Definition)
 
